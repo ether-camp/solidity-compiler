@@ -1,0 +1,8 @@
+{
+  "name": "solidity-compiler",
+  "version": "0.0.1",
+  "main": "compiler.js",
+  "dependencies": {
+    "lodash": "^4.5.1"
+  }
+}
