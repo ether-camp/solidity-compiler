@@ -2,7 +2,7 @@ var execFile = require('child_process').execFile;
 var _ = require('lodash');
 
 function Compiler(dir, solcBin) {
-  this.dir = dir;
+  this.dir = dir || '.';
   this.solcBin = solcBin || 'solc';
 }
 
