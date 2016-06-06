@@ -14,12 +14,22 @@ Compiler.prototype.compile = function(file, cb) {
 };
 
 Compiler.prototype.compileWithJs = function(file, cb) {
+  var dir = this.dir;
   fs.readFile(this.dir + '/' + file, function(err, data) {
     if (err) return cb(err);
 
     var input = {};
     input[file] = data.toString();
-    var output = solc.compile({ sources: input }, 1);
+    var output = solc.compile({ sources: input }, 1, function findImports(path) {
+      try {
+        return { contents: fs.readFileSync(dir + '/' + path).toString() };
+      } catch (e) {
+        return { error: e };
+      }
+    });
+
+    if (output.errors) return cb(output.errors);
+
     try {
       cb(
         null,
