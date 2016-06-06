@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "compiler.js",
   "dependencies": {
-    "lodash": "^4.5.1"
+    "lodash": "^4.5.1",
+    "solc": "^0.3.4"
   }
 }
